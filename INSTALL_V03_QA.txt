@@ -1,0 +1,42 @@
+GHOST SHIFT v0.3 QA PATCH - WINDOWS
+===================================
+
+This patch keeps the original scorer for historical comparison while adding
+an additional case-specific QA scorer. No paid dependencies.
+
+Before installing:
+1. Preserve your original /runs folder and the original v0.2 download.
+2. Close the Ghost Shift server in PowerShell with Ctrl+C.
+3. If you have made local code changes, back them up before replacing files.
+
+Install into the SAME existing project folder where you previously saw
+/demo, /ghostshift, and /tests:
+
+1. Open the ZIP. Select its contents (not the outer ZIP/folder).
+2. Copy them into your existing GhostShift-Cinematic-v02-Verified folder.
+3. Let Windows MERGE folders and REPLACE files when asked.
+4. Verify ghostshift/qa.py is next to ghostshift/engine.py.
+5. Your existing runs/*.json should remain where they were. This ZIP does NOT
+   include or overwrite a runs folder.
+
+Check:
+  py -3 -m unittest discover -s tests -v
+  py -3 audit/replay_qa_probe.py
+
+The replay is SYNTHETIC, not a real model trial.
+
+Run new live experiment:
+  py -3 -m ghostshift.web
+
+Open http://127.0.0.1:8765 and choose:
+  The midnight policy flip
+  Live local AI · Ollama
+  gemma3:1b
+
+Run Agent A -> Blackout -> Agent B and inspect BOTH scorer panels.
+Save the new run JSON. The updated model output contains a 'basis' object.
+This is a NEW protocol and should not be claimed as a rerun of the original
+unchanged prompts. Even a clean QA result needs human review.
+
+The film is not changed by this patch. Keep your completed narrated version.
+The existing historical run records remain unmodified.

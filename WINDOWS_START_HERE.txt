@@ -1,0 +1,24 @@
+GHOST SHIFT | First run on Windows
+
+1. Extract GhostShift-v0.2-Cinematic.zip to your Desktop (or another folder).
+2. Open that extracted folder.
+3. Click the File Explorer address bar, type powershell, press Enter.
+4. Type:
+      py -3 -m ghostshift.web
+5. Open http://127.0.0.1:8765 in your browser.
+6. Select a scenario and use Scripted Preview to explore the flow.
+
+Important: Scripted Preview is NOT AI. To run a genuine AI experiment:
+
+A. Install Ollama from https://ollama.com/
+B. In a NEW PowerShell window, run:
+      ollama pull qwen2.5:1.5b
+C. Ensure the Ollama app is running. If necessary, run:
+      ollama serve
+   (If it says the port is already in use, Ollama may already be running.)
+D. Return to the Ghost Shift webpage, select "Live local AI · Ollama".
+E. Select qwen2.5:1.5b and run Agent A -> Blackout -> Agent B.
+F. Inspect the actual model outcome. Model errors/failures are legitimate results.
+
+No account, payment, cloud server, or external inference API required.
+Python 3.10 or newer required. All cases are fictional.

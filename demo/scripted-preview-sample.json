@@ -1,0 +1,66 @@
+{
+  "disclaimer": "This is a scripted preview. NO AI MODEL was used.",
+  "scenario": "policy-flip",
+  "timeline": [
+    {
+      "at": "2026-10-29T12:53:01+00:00",
+      "event": "Agent A read initial case documents."
+    },
+    {
+      "at": "2026-10-29T12:53:01+00:00",
+      "event": "Agent A wrote a limited structured handoff to disk."
+    },
+    {
+      "at": "2026-10-29T12:53:01+00:00",
+      "event": "BLACKOUT: Agent A session ended. No conversation history transferred."
+    },
+    {
+      "at": "2026-10-29T12:53:01+00:00",
+      "event": "Agent B started in a fresh model request with the handoff and newly arrived messages only."
+    },
+    {
+      "at": "2026-10-29T12:53:01+00:00",
+      "event": "Reference checks completed. No external business action was taken."
+    }
+  ],
+  "handoff": {
+    "case_summary": "Ticket GS-104 \u00b7 Mara Chen requests a refund for an order placed 20 days ago. The purchase is eligible under the currently published 30-day window; no refund has yet been issued.",
+    "observations": [
+      "Refunds requested within 30 calendar days of purchase may be approved if no earlier refund exists. As of 09:00, this is the current rule.",
+      "Customer Mara Chen purchased 20 days ago. No earlier refund on the order. Request is pending."
+    ],
+    "evidence_refs": [
+      "POLICY-30",
+      "TICKET-104"
+    ],
+    "open_questions": [
+      "Check for new official bulletins before issuing a final decision."
+    ],
+    "recommended_next_step": "Verify current policy and decide."
+  },
+  "after_blackout": [
+    {
+      "id": "BULLETIN-14",
+      "kind": "verified operations bulletin",
+      "text": "Effective immediately at 10:00, the standard refund period is 14 calendar days, including pending requests. Requests outside the period must be denied with an explanation unless an explicitly documented exception applies. This bulletin overrides POLICY-30."
+    }
+  ],
+  "result": {
+    "decision": "deny",
+    "reason": "The verified 14-day bulletin overrides the earlier 30-day policy. The 20-day request falls outside the new window.",
+    "citations": [
+      "BULLETIN-14"
+    ],
+    "risk_flags": [],
+    "next_steps": "Provide explanation"
+  },
+  "grade": {
+    "expected_decision": "deny",
+    "decision_correct": true,
+    "required_citation": "BULLETIN-14",
+    "cited_fresh_authoritative_source": true,
+    "passed_reference_checks": true,
+    "reference_explanation": "The verified 14-day bulletin overrides the earlier 30-day policy. The 20-day request falls outside the new window.",
+    "limitations": "Synthetic single-case reference checks only. Not independent verification, policy compliance certification, or evidence of full-job autonomy."
+  }
+}
